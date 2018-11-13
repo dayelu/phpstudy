@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>登录验证</title>
+</head>
+<body>
+	<form action = "#">
+		<center>
+			<h3>Ajax+php验证用户名是否可用</h3>
+			<table>
+				<tr>
+					<td>
+						用户名：<input type="text" name="UserID" id="UserID" onchange="satrtRequest()" />
+						<span id="span"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						密&nbsp;&nbsp;码： <input type="text" name="Pwd" id="Pwd" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" name="Reg" id="Reg" value="注册">
+						<input type="button" name="Log" id="Log" value="登录">
+					</td>
+				</tr>
+			</table>
+		</center>
+	</form>
+</body>
+</html>
+
+<script type="text/javascript">
+	var xmlHttp;
+	function createXMLHttpRequest()
+	{
+		//在ie浏览器中创建XMLHttpRequest对象
+		try{
+			xmlHttp = new ActiveXOject("Msxml2.XMLHTTP");
+		}catch(e){
+			try{
+				xmlHttp = new ActiveXOject("Microsoft.XMLHTTP");
+			}catch(oc){
+				xmlHttp = null;
+			}
+		}
+		//在主流非ie浏览器下创建XMLHttpResquest对象
+		if (!xmlHttp && typeof XMLHttpRequest != "undefiend") 
+		{
+			xmlHttp = new XMLHttpRequest();
+		}
+		return xmlHttp;
+	}
+
+	//发送请求
+	function satrtRequest()
+	{
+		//获取用户输入的信息
+		var UserID = document.getElementById('UserID').value;
+		//输用户名是否为空
+		if (UserID != "") 
+		{
+			//创建XMLRequest();
+			createXMLHttpRequest();
+			var url = "Login.php?UserID="+encodeURI(UserID);//指定url
+			xmlHttp.open("GET",url,true);
+			xmlHttp.onreadystatechange = headleStateChange;//指定回调函数
+			xmlHttp.send(null);
+		}else{
+			alert("请填写用户名！");
+		}
+	}
+	//回调函数
+	function headleStateChange()
+	{
+		//判断readyState的状态
+		if (xmlHttp.readyState<4) 
+		{
+			span.innerHTML="正在读取数据...";
+		}
+		//请求完成(readyState值为4)
+		if (xmlHttp.readyState==4)
+		{
+			//响应完成(HTTP状态为200)
+			if (xmlHttp.status==200)
+			 {
+			 	span.innerHTML=xmlHttp.responseText;
+			 }else{
+			 	alert("错误，请求页面异常！");
+			 }
+		}
+	}
+</script>
