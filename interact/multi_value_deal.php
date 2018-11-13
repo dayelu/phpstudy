@@ -65,9 +65,9 @@
 							
 							echo "<strong>your favorite sport is</strong>";	
 
-							foreach ($_POST['sports'] as $strong) {
+							foreach ($_POST['sports'] as $spost) {
 								
-								echo $post."^!^";
+								echo $spost."^!^";
 
 							echo "<br/ >";
 
