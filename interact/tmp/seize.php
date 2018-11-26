@@ -12,14 +12,19 @@
 		//feof()检测文件是否到达结尾
 		while (!feof($fp)) {
 			//每次向文件读取10m字节的数据
-			$line = fread($fp,10000000);
+			$line = fread($fp,100000);
 			//每次向新文件写入10m数据
 			fwrite($newfile,$line);
 		}
 		//关闭句柄
 		fclose($fp);
 		fclose($newfile);
+		return 0;
 	}
+
+
+
+
 
 	/*
 		过滤、筛选
@@ -55,7 +60,11 @@
 	// donwload($url,$filname);
 	
 	// $url = "http://www.w3school.com.cn/php/func_filesystem_fread.asp";
-	$url = "https://www.baidu.com";		//很显然loadHTML()方法解析不了https协议的文档
+	// $url = "https://www.baidu.com";		//很显然loadHTML()方法解析不了https协议的文档
+
+	$donwload_url = "https://201606mp4.11bubu.com/20160731/club-256/1/xml/91_7fe50466651e4995fb85dd2476a6d2d0.mp4";
+
+	donwload($donwload_url,"修身.mp4");
 
 	// $res = getURLContent($url);
 
