@@ -1,0 +1,23 @@
+#!/usr/bin/php
+<?php
+
+function test(){
+#function test($start,$end){
+
+	#foreach(range($start,$end) as $i){
+	#	yield $i => $i * 2; 
+	#}
+	yield $i = 100;
+}
+
+#var_dump(test());
+
+foreach(test() as $row){
+	echo $row . "\n";
+}
+
+#foreach(test(1,8) as $row => $item){
+#	echo $row . ' double is ' .$item."\n";	
+#}
+
+?>

@@ -1,0 +1,17 @@
+#!/usr/bin/php
+<?php
+
+function test($start,$end){
+
+	foreach(range($start,$end) as $i){
+		yield $i => $i * 2; 
+	}
+}
+
+foreach(test(1,8) as $row => $item){
+
+	echo $row . ' double is ' .$item."\n";	
+
+}
+
+?>

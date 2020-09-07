@@ -1,0 +1,43 @@
+#!/usr/bin/php
+<?php
+
+class Second{
+	public function say()
+	{
+		echo "I\'m the second class";
+	}
+}
+
+class Three{
+	public function say()
+	{
+		echo "I\'m the first class";
+	}
+}
+
+class First extends Second{
+
+	public function say()
+	{
+		echo "I\'m the first class";
+	}
+	function MySpeak(){
+		$this->say();
+	}
+
+	#$this->MySpeak();
+
+	$model = new First();
+	
+	$model->MySpeak();
+	
+
+}
+
+
+#class First extends Three{
+#}
+
+
+
+?>
